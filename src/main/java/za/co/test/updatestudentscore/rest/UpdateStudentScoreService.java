@@ -26,9 +26,15 @@ public class UpdateStudentScoreService {
 		
 
 		
-		List<DBResponseDTO> student = new ArrayList<DBResponseDTO>();
+		DBResponseDTO student = new DBResponseDTO();
 		try {
 			requiredField(request.getStudent_no(), "student_no");
+			
+			 List<DBResponseDTO> studentDB = sqlClient.retrieveStudent(request.getStudent_no(), null, null, null);
+			if (Objects.isNull(studentDB) || studentDB.size()==0) {
+				response.setResultMsg("No student found in database");
+				return response;
+			}
 
 			if(request.getScore().compareTo(BigDecimal.valueOf(100)) == 1) {
 				response.setResultMsg("Score can not be greater than 100");
@@ -42,20 +48,19 @@ public class UpdateStudentScoreService {
 			};
 			
 			try {
-			 student = sqlClient.retrieveStudent(request.getStudent_no(), null, null, null);
-			if (Objects.isNull(student) || student.size()==0) {
-				response.setResultMsg("No student found in database");
-				return response;
-			}
-			BigDecimal avarageScoreCalculated = (student.get(0).getAverage_score().add(request.getScore())).divide(BigDecimal.valueOf(2)) ;
-			sqlClient.updateStudent(student.get(0).getStudent_no(), student.get(0).getStudent_no(), student.get(0).getFirst_name(), student.get(0).getLast_name(),
-					student.get(0).getDob(), student.get(0).getCell_no(), student.get(0).getEmail_address(), 
-					request.getScore(), avarageScoreCalculated);
+				student = sqlClient.retrieveScore(request.getStudent_no());
+				if (Objects.isNull(student)) {
+					sqlClient.insertStudentScore(request.getStudent_no(), request.getScore());
+					response.setResultMsg("Success");
+					return response;
+				}
+				sqlClient.updateScore(request.getStudent_no(), request.getScore());
 				
 				response.setResultMsg("Success");
 			}
 			catch (EmptyResultDataAccessException e) {
-				response.setResultMsg("No student found in database");
+				sqlClient.insertStudentScore(request.getStudent_no(), request.getScore());
+				response.setResultMsg("Success");
 				return response;
 			}
 		}

@@ -21,14 +21,13 @@ public class CreateStudentService {
 			requiredField(request.getLast_name(), "last_name");
 			String student_no = request.getFirst_name() + request.getLast_name();
 			sqlClient.insertStudentProfile(student_no, request.getFirst_name(), request.getLast_name(),
-					request.getDob(), request.getCell_no(), request.getEmail_address(), 
-					request.getCurrent_score(), request.getAverage_score());
+					request.getDob(), request.getCell_no(), request.getEmail_address());
 			
 			response.setResultMsg("Success");
 		}
 		catch (DuplicateKeyException duplicateE) {
 			
-			response.setResultMsg("(student_no)=(VeliMahlangu) already exists.");
+			response.setResultMsg("(student_no)=("+request.getFirst_name() + request.getLast_name()+") already exists.");
 			return response;
 		}
 		catch (Exception e)

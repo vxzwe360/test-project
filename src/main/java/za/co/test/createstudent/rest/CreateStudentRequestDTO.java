@@ -1,6 +1,5 @@
 package za.co.test.createstudent.rest;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 
 public class CreateStudentRequestDTO{
@@ -11,8 +10,6 @@ public class CreateStudentRequestDTO{
 	private Date dob;
 	private String cell_no;
 	private String email_address;
-	private BigDecimal current_score;
-	private BigDecimal average_score;
 	
 	
 	public String getStudent_no() {
@@ -51,18 +48,5 @@ public class CreateStudentRequestDTO{
 	public void setEmail_address(String email_address) {
 		this.email_address = email_address;
 	}
-	public BigDecimal getCurrent_score() {
-		return current_score;
-	}
-	public void setCurrent_score(BigDecimal current_score) {
-		this.current_score = current_score;
-	}
-	public BigDecimal getAverage_score() {
-		return average_score;
-	}
-	public void setAverage_score(BigDecimal average_score) {
-		this.average_score = average_score;
-	}
-	
 
 }
