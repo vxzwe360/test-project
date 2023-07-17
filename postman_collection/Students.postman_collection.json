@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "e7e2deff-4a97-4865-8d42-4cd33f31a8dc",
+		"name": "Students",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getallstudents",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/experian/getallstudents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"experian",
+						"getallstudents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"first_name\": \"Veli\",\r\n  \"last_name\": \"Mahlangu\",\r\n  \"dob\": \"1999-07-15T11:13:34.298Z\",\r\n  \"cell_no\": \"+27815671534\",\r\n  \"email_address\": \"veli@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/experian/createstudent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"experian",
+						"createstudent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchstudent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"student_no\": \"string\",\r\n  \"first_name\": \"Sego\",\r\n  \"last_name\": \"string\",\r\n  \"email_address\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/experian/searchstudent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"experian",
+						"searchstudent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletestudent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"student_no\": \"LungileMahlangu\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/experian/deletestudent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"experian",
+						"deletestudent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatestudent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"student_no\": \"ZizweMahderangu\",\r\n    \"first_name\": \"Velizizwe\",\r\n    \"dob\": \"1999-07-15T11:13:34.298Z\",\r\n    \"cell_no\": \"+27815671534\",\r\n    \"email_address\": \"veli@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/experian/updatestudent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"experian",
+						"updatestudent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatestudentscore",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"score\": 56,\r\n  \"student_no\": \"LungileMahlangu\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/experian/updatestudentscore",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"experian",
+						"updatestudentscore"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
